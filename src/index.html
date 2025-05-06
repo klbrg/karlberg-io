@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Rickard Karlberg - Platform Engineer specializing in Kubernetes, Azure AKS, GitOps, and developer experience. Expertise in Cilium networking, cert-manager, Terraform, and production infrastructure for critical workloads." />
+  <meta name="keywords"
+    content="Platform Engineer, Kubernetes, Azure AKS, GitOps, ArgoCD, Cilium, cert-manager, Terraform, Developer Experience, Infrastructure, Finance" />
+  <meta name="author" content="Rickard Karlberg" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://karlberg.io" />
+
+  <!-- Sitemap -->
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Rickard Karlberg - Infrastructure Engineer" />
+  <meta property="og:description"
+    content="Building scalable cloud-native platforms with Kubernetes, DevOps tooling, and microservices architecture." />
+  <meta property="og:url" content="https://karlberg.io" />
+  <meta property="og:image" content="https://karlberg.io/og-image.png" />
+
+  <title>Rickard Karlberg - Infrastructure Engineer</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+
+  <!-- Preconnect to external resources for better performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+
+  <!-- Structured Data (JSON-LD) for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Rickard Karlberg",
+    "jobTitle": "Infrastructure Engineer",
+    "url": "https://karlberg.io",
+    "sameAs": [
+      "https://github.com/klbrg",
+      "https://www.linkedin.com/in/rickard-karlberg",
+      "https://www.goodreads.com/klbrg"
+    ],
+    "knowsAbout": [
+      "Kubernetes",
+      "Infrastructure as Code",
+      "DevOps",
+      "Cloud Computing",
+      "Azure",
+      "AWS",
+      "Terraform",
+      "Docker",
+      "Site Reliability Engineering",
+      "Cilium",
+      "CI/CD"
+    ],
+    "description": "Infrastructure Engineer specializing in building and maintaining scalable cloud-native platforms with expertise in Kubernetes, Infrastructure as Code, and DevOps automation."
+  }
+  </script>
+</head>
+
+<body>
+  <nav class="nav-bar">
+    <div class="nav-content">
+      <a href="#home" class="nav-logo">RK</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="fade-in">Rickard Karlberg</h1>
+          <h2 class="fade-in delay-1"><i class="fa-solid fa-server"></i> Infrastructure Engineer</h2>
+          <p class="hero-description fade-in delay-2">
+            I build platforms so developers can move fast and sleep at night. My focus is platform
+            engineering for Kubernetes on Azure — AKS, Cilium for networking and observability, and
+            GitOps for predictable deployments. Terraform and Python keep the boring parts repeatable.
+          </p>
+        </div>
+
+        <div class="terminal fade-in delay-3">
+          <div class="terminal-header">
+            <span class="terminal-title"><i class="fa-solid fa-terminal"></i> ~/platform/manifests</span>
+            <div class="terminal-controls">
+              <span class="control close"></span>
+              <span class="control minimize"></span>
+              <span class="control maximize"></span>
+            </div>
+          </div>
+          <pre id="typed-output" class="terminal-output"></pre>
+        </div>
+        <button class="execute-button fade-in delay-4" id="apply-button">
+          <i class="fa-solid fa-play"></i> Apply Manifests
+        </button>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title"><i class="fa-solid fa-user"></i> About Me</h2>
+        <div class="about-content">
+          <p>
+            I work on the platform: the shared services, automation and runtime that developers rely on.
+            Azure is where I do most of that work. I run AKS, reason about network topology, and tune the
+            parts that affect reliability and developer productivity.
+          </p>
+          <p>
+            I see the stack from packet to platform — TCP/IP, routing and BGP, Cilium at the CNI layer,
+            Kubernetes control plane and APIs, and the developer-facing surface (Helm, Kustomize, ArgoCD).
+            I use Terraform and Python to make operations repeatable and reviewable.
+          </p>
+          <p>
+            I've spent decades running critical workloads in finance and exchanges. I have strong opinions
+            and care about architecture, but I focus on outcomes: operational stability and making life
+            easier for developers is how the business wins.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section bg-alt">
+      <div class="container">
+        <h2 class="section-title"><i class="fa-solid fa-code"></i> Technical Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fa-solid fa-cloud"></i></div>
+            <h3>Azure & Platform</h3>
+            <ul>
+              <li>Azure (AKS, VNets, networking)</li>
+              <li>Production AKS operations</li>
+              <li>High-availability and multi-region patterns</li>
+              <li>Bicep / ARM Templates</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fa-brands fa-docker"></i></div>
+            <h3>Kubernetes & Developer DX</h3>
+            <ul>
+              <li>Kubernetes (AKS)</li>
+              <li>Developing Helm charts</li>
+              <li>Kustomize & GitOps workflows</li>
+              <li>Service networking and ingress</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fa-solid fa-code-branch"></i></div>
+            <h3>GitOps & CI/CD</h3>
+            <ul>
+              <li>ArgoCD (GitOps)</li>
+              <li>GitHub Actions</li>
+              <li>Pull-request environments & pipeline automation</li>
+              <li>Declarative deployment workflows</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fa-solid fa-server"></i></div>
+            <h3>Infrastructure & Automation</h3>
+            <ul>
+              <li>Terraform</li>
+              <li>Ansible</li>
+              <li>Network automation</li>
+              <li>Repeatable, reviewed automation (Python)</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fa-solid fa-network-wired"></i></div>
+            <h3>Networking & Observability</h3>
+            <ul>
+              <li>TCP/IP, routing and BGP</li>
+              <li>Cilium & CNI-level observability</li>
+              <li>Network policies (L3–L7)</li>
+              <li>Prometheus & Grafana integration</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3>Security & TLS</h3>
+            <ul>
+              <li>cert-manager & ACME automation</li>
+              <li>TLS certificate management</li>
+              <li>Azure Key Vault integration</li>
+              <li>Secret management and rotation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section-title"><i class="fa-solid fa-diagram-project"></i> Featured Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-header">
+              <h3><i class="fa-solid fa-dharmachakra"></i> Multi-Cluster K8s Platform</h3>
+              <span class="project-tag">Production</span>
+            </div>
+            <p>
+              Designed and deployed a highly available, multi-region Kubernetes platform serving
+              microservices across development, staging, and production environments. Implemented
+              GitOps workflows with ArgoCD and automated scaling policies.
+            </p>
+            <div class="project-tech">
+              <span>Kubernetes</span>
+              <span>Terraform</span>
+              <span>ArgoCD</span>
+              <span>Prometheus</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <h3><i class="fa-solid fa-lock"></i> Automated TLS Certificate Management</h3>
+              <span class="project-tag">Security</span>
+            </div>
+            <p>
+              Implemented cert-manager across AKS clusters to automate TLS certificate provisioning
+              and renewal using ACME (Let's Encrypt). Reduced certificate delivery time from days to
+              minutes. Eliminated manual certificate handling and expiry incidents. Integrated with
+              Azure DNS for domain validation and Kubernetes Ingress for automatic TLS termination.
+            </p>
+            <div class="project-tech">
+              <span>cert-manager</span>
+              <span>ACME / Let's Encrypt</span>
+              <span>Kubernetes</span>
+              <span>Azure DNS</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <h3><i class="fa-solid fa-gauge-high"></i> Observability Stack</h3>
+              <span class="project-tag">Enterprise</span>
+            </div>
+            <p>
+              Built a centralized observability platform integrating metrics, logs, and traces.
+              Implemented custom dashboards, alerting rules, and SLO tracking to improve system
+              reliability and reduce MTTR by 60%.
+            </p>
+            <div class="project-tech">
+              <span>Prometheus</span>
+              <span>Grafana</span>
+              <span>Loki</span>
+              <span>Jaeger</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-alt">
+      <div class="container">
+        <h2 class="section-title"><i class="fa-solid fa-envelope"></i> Get In Touch</h2>
+        <p class="contact-text">
+          Want to discuss platform engineering, Kubernetes, or infrastructure challenges? Reach out.
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Email" data-email="cmlja2FyZEByaWNrYXJkay5zZQ==">
+            <i class="fa-solid fa-envelope"></i>
+            <span>Email</span>
+          </a>
+          <a href="https://github.com/klbrg" target="_blank" aria-label="GitHub" class="social-link">
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+          </a>
+          <a href="https://www.linkedin.com/in/rickard-karlberg" target="_blank" aria-label="LinkedIn"
+            class="social-link">
+            <i class="fab fa-linkedin"></i>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://www.goodreads.com/klbrg" target="_blank" aria-label="Goodreads" class="social-link">
+            <i class="fa-brands fa-goodreads"></i>
+            <span>Goodreads</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Rickard Karlberg • Infrastructure Engineer • <a href="https://karlberg.io"
+          target="_blank">karlberg.io</a></p>
+    </div>
+  </footer>
+</body>
+
+<script>
+  const codeSnippet =
+    `$ ls -lh\n` +
+    `total 32K\n` +
+    `-rw-r--r-- 1 rickard platform  412 Feb  4 14:23 namespace.yaml\n` +
+    `-rw-r--r-- 1 rickard platform 1.2K Feb  4 14:23 deployment.yaml\n` +
+    `-rw-r--r-- 1 rickard platform  324 Feb  4 14:23 service.yaml\n` +
+    `-rw-r--r-- 1 rickard platform  518 Feb  4 14:23 ingress.yaml\n` +
+    `-rw-r--r-- 1 rickard platform  627 Feb  4 14:23 network-policy.yaml\n` +
+    `-rw-r--r-- 1 rickard platform  389 Feb  4 14:23 certificate.yaml\n` +
+    `-rw-r--r-- 1 rickard platform  445 Feb  4 14:23 hpa.yaml\n` +
+    `-rw-r--r-- 1 rickard platform  298 Feb  4 14:23 service-monitor.yaml\n` +
+    `$ `;
+
+  const outputLines = [
+    '$ kubectl apply -f .',
+    '',
+    'namespace/platform-production created',
+    'deployment.apps/api-gateway created',
+    'service/api-gateway created',
+    'ingress.networking.k8s.io/api-gateway created',
+    'networkpolicy.networking.k8s.io/api-gateway-policy created',
+    'certificate.cert-manager.io/api-gateway-tls created',
+    'horizontalpodautoscaler.autoscaling/api-gateway created',
+    'servicemonitor.monitoring.coreos.com/api-gateway created',
+    '',
+    'Waiting for rollout to complete...',
+    'deployment "api-gateway" successfully rolled out'
+  ];
+
+  const outputEl = document.getElementById('typed-output');
+  const applyButton = document.querySelector('.execute-button');
+  let isApplied = false;
+  let lineTimeout = null;
+
+  function showLsOutput() {
+    // ls output appears instantly with cursor at prompt
+    outputEl.textContent = codeSnippet;
+    outputEl.classList.remove('no-cursor');
+  }
+
+  function stopLineByLine() {
+    if (lineTimeout) {
+      clearTimeout(lineTimeout);
+      lineTimeout = null;
+    }
+  }
+
+  function resetToLs() {
+    stopLineByLine();
+    isApplied = false;
+    outputEl.textContent = '';
+    applyButton.innerHTML = '<i class="fa-solid fa-play"></i> Apply Manifests';
+    applyButton.classList.remove('applied');
+    applyButton.disabled = false;
+    showLsOutput();
+  }
+
+  function applyConfiguration() {
+    stopLineByLine();
+    outputEl.textContent = '';
+    outputEl.classList.add('no-cursor');
+
+    applyButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Applying...';
+    applyButton.disabled = true;
+    applyButton.classList.remove('applied');
+
+    // Line-by-line output with progressive delay
+    let lineIndex = 0;
+
+    function displayNextLine() {
+      if (lineIndex < outputLines.length) {
+        outputEl.textContent += outputLines[lineIndex] + '\n';
+        lineIndex++;
+
+        // Vary timing: faster for resource creation, slower for final messages
+        const delay = lineIndex >= outputLines.length - 3 ? 400 : 180;
+        lineTimeout = setTimeout(displayNextLine, delay);
+      } else {
+        // All lines displayed, add prompt and show cursor
+        outputEl.textContent += '$ ';
+        outputEl.classList.remove('no-cursor');
+
+        // Update button
+        applyButton.innerHTML = '<i class="fa-solid fa-check"></i> Applied Successfully';
+        applyButton.classList.add('applied');
+        isApplied = true;
+
+        setTimeout(() => {
+          applyButton.disabled = false;
+        }, 800);
+      }
+    }
+
+    // Start line-by-line display after short initial delay
+    setTimeout(displayNextLine, 300);
+  }
+
+  function handleButtonClick() {
+    if (isApplied) {
+      resetToLs();
+    } else {
+      applyConfiguration();
+    }
+  }
+
+  // Theme toggle functionality
+  function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+
+    document.documentElement.setAttribute('data-theme', theme);
+    updateThemeIcon(theme);
+  }
+
+  function updateThemeIcon(theme) {
+    const icon = document.querySelector('#theme-toggle i');
+    if (icon) {
+      icon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+    }
+  }
+
+  function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
+  }
+
+  // Smooth scrolling for navigation
+  document.addEventListener('DOMContentLoaded', function () {
+    // Initialize theme
+    initTheme();
+
+    // Attach theme toggle handler
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+      themeToggle.addEventListener('click', toggleTheme);
+    }
+
+    // Show initial ls output
+    showLsOutput();
+
+    // Attach button click handler
+    const button = document.getElementById('apply-button');
+    if (button) {
+      button.addEventListener('click', handleButtonClick);
+    }
+
+    // Email obfuscation - decode base64 email on click
+    document.querySelectorAll('[data-email]').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const email = atob(this.dataset.email);
+        window.location.href = 'mailto:' + email;
+      });
+    });
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.skill-card, .project-card').forEach(el => {
+      observer.observe(el);
+    });
+  });
+</script>
+
+</html>
