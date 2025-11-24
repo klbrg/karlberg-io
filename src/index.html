@@ -266,7 +266,7 @@
     `  location            = azurerm_resource_group.main.location\n` +
     `  resource_group_name = azurerm_resource_group.main.name\n` +
     `  dns_prefix          = "aks-prod"\n` +
-    `  kubernetes_version  = "1.28.3"\n` +
+    `  kubernetes_version  = "1.34.0"\n` +
     `\n` +
     `  default_node_pool {\n` +
     `    name                = "system"\n` +
@@ -282,8 +282,10 @@
     `  }\n` +
     `\n` +
     `  network_profile {\n` +
-    `    network_plugin = "azure"\n` +
-    `    network_policy = "calico"\n` +
+    `    network_plugin      = "azure"\n` +
+    `    network_plugin_mode = "overlay"\n` +
+    `    network_dataplane   = "cilium"\n` +
+    `    ebpf_data_plane     = "cilium"\n` +
     `  }\n` +
     `}\n`;
 
@@ -297,18 +299,31 @@
     `      + location            = "westeurope"\n` +
     `      + resource_group_name = "rg-infrastructure"\n` +
     `      + dns_prefix          = "aks-prod"\n` +
-    `      + kubernetes_version  = "1.28.3"\n` +
+    `      + kubernetes_version  = "1.34.0"\n` +
+    `      + network_dataplane   = "cilium"\n` +
     `    }\n` +
     `\n` +
     `Plan: 1 to add, 0 to change, 0 to destroy.\n` +
     `\n` +
-    `✓ Cluster successfully provisioned\n` +
-    `✓ Node pools configured\n` +
-    `✓ Network policies enabled\n`;
+    `Applying configuration...\n` +
+    `\n` +
+    `azurerm_kubernetes_cluster.main: Creating...\n` +
+    `azurerm_kubernetes_cluster.main: Still creating... [30s elapsed]\n` +
+    `azurerm_kubernetes_cluster.main: Still creating... [1m0s elapsed]\n` +
+    `azurerm_kubernetes_cluster.main: Creation complete after 3m24s\n` +
+    `\n` +
+    `Apply complete! Resources: 1 added, 0 changed, 0 destroyed.\n` +
+    `\n` +
+    `✓ AKS cluster successfully provisioned\n` +
+    `✓ Cilium dataplane configured\n` +
+    `✓ Node pools configured with autoscaling\n` +
+    `✓ Kubernetes 1.34.0 deployed\n`;
 
   const outputEl = document.getElementById('typed-output');
+  const applyButton = document.querySelector('.execute-button');
   let i = 0;
   let isTyping = true;
+  let isApplied = false;
 
   function typeChar() {
     if (i < codeSnippet.length && isTyping) {
@@ -322,6 +337,35 @@
     isTyping = false;
     outputEl.textContent = '';
     outputEl.classList.add('no-cursor');
+    
+    // Update button state
+    if (!isApplied) {
+      applyButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Applying...';
+      applyButton.disabled = true;
+      
+      // Simulate terraform apply
+      setTimeout(() => {
+        outputEl.textContent = codeOutput;
+        applyButton.innerHTML = '<i class="fa-solid fa-check"></i> Applied Successfully';
+        applyButton.classList.add('applied');
+        isApplied = true;
+        
+        // Re-enable button after completion
+        setTimeout(() => {
+          applyButton.disabled = false;
+        }, 1000);
+      }, 2000);
+    } else {
+      // Reset to initial state
+      isApplied = false;
+      outputEl.textContent = '';
+      outputEl.classList.remove('no-cursor');
+      i = 0;
+      isTyping = true;
+      applyButton.innerHTML = '<i class="fa-solid fa-play"></i> Apply Configuration';
+      applyButton.classList.remove('applied');
+      typeChar();
+    }
   }
 
   // Smooth scrolling for navigation
