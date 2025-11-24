@@ -176,6 +176,7 @@ main {
   margin: 2rem auto;
   max-width: 900px;
   border: 1px solid #334155;
+  text-align: left;
 }
 
 .terminal-header {
