@@ -4,81 +4,307 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rickard Karlberg</title>
+  <meta name="description" content="Rickard Karlberg - Infrastructure Engineer specializing in Kubernetes, cloud-native platforms, DevOps automation, and scalable infrastructure solutions." />
+  <meta name="keywords" content="Infrastructure Engineer, DevOps, Kubernetes, Cloud Native, Azure, AWS, Terraform, IaC, Site Reliability Engineering" />
+  <meta name="author" content="Rickard Karlberg" />
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Rickard Karlberg - Infrastructure Engineer" />
+  <meta property="og:description" content="Building scalable cloud-native platforms with Kubernetes, DevOps tooling, and microservices architecture." />
+  <meta property="og:url" content="https://karlberg.io" />
+  
+  <title>Rickard Karlberg - Infrastructure Engineer</title>
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 </head>
 
 <body>
-  <div class="container">
-    <h1>Rickard Karlberg</h1>
-    <h2><i class="fa-solid fa-code"></i> Infrastructure Engineer</h2>
-    <p>I specialize in building and maintaining scalable cloud-native platforms, with a strong focus on Kubernetes,
-      DevOps tooling, and microservices.</p>
-
-    <div class="terminal">
-      <pre id="typed-output" class="terminal-output"></pre>
+  <nav class="nav-bar">
+    <div class="nav-content">
+      <a href="#home" class="nav-logo">RK</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
-    <button class="execute-button"
-      onclick="clearTerminal(); document.getElementById('typed-output').textContent = codeOutput">
-      ▶ Run
-    </button>
+  </nav>
 
-    <h2>About Me</h2>
-    <p>I'm a passionate engineer with a knack for solving complex problems. I thrive in dynamic environments and
-      enjoy collaborating with teams to deliver high-quality software solutions.</p>
-    <p>In my spare time, I love to explore new technologies, contribute to open-source projects, and share my
-      knowledge through writing and speaking engagements.</p>
-    <div class="social-links">
-      <a href="https://github.com/klbrg" target="_blank" aria-label="GitHub">
-        <i class="fab fa-github"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/rickard-karlberg" target="_blank" aria-label="LinkedIn">
-        <i class="fab fa-linkedin"></i>
-      </a>
-        <a href="https://www.goodreads.com/klbrg" target="_blank" aria-label="Goodreads">
-      <i class="fa-brands fa-goodreads"></i>
-      </a>
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="fade-in">Rickard Karlberg</h1>
+          <h2 class="fade-in delay-1"><i class="fa-solid fa-server"></i> Infrastructure Engineer</h2>
+          <p class="hero-description fade-in delay-2">
+            Building and maintaining scalable cloud-native platforms with expertise in Kubernetes, 
+            Infrastructure as Code, and DevOps automation. Passionate about reliability, performance, 
+            and delivering robust infrastructure solutions.
+          </p>
+        </div>
+
+        <div class="terminal fade-in delay-3">
+          <div class="terminal-header">
+            <span class="terminal-title"><i class="fa-solid fa-terminal"></i> infrastructure.tf</span>
+            <div class="terminal-controls">
+              <span class="control close"></span>
+              <span class="control minimize"></span>
+              <span class="control maximize"></span>
+            </div>
+          </div>
+          <pre id="typed-output" class="terminal-output"></pre>
+        </div>
+        <button class="execute-button fade-in delay-4"
+          onclick="clearTerminal(); document.getElementById('typed-output').textContent = codeOutput">
+          <i class="fa-solid fa-play"></i> Apply Configuration
+        </button>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title"><i class="fa-solid fa-user"></i> About Me</h2>
+        <div class="about-content">
+          <p>
+            I'm an infrastructure engineer with a deep passion for building resilient, scalable systems 
+            that power modern applications. My expertise spans across cloud platforms, container orchestration, 
+            and automation, with a strong focus on operational excellence.
+          </p>
+          <p>
+            I thrive in solving complex infrastructure challenges, implementing best practices for reliability 
+            and security, and collaborating with cross-functional teams to deliver high-quality solutions. 
+            Whether it's designing CI/CD pipelines, optimizing Kubernetes clusters, or implementing 
+            infrastructure as code, I'm committed to continuous improvement and innovation.
+          </p>
+          <p>
+            Beyond work, I actively contribute to open-source projects, stay current with emerging technologies, 
+            and share knowledge through technical writing and community engagement.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section bg-alt">
+      <div class="container">
+        <h2 class="section-title"><i class="fa-solid fa-code"></i> Technical Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fa-brands fa-docker"></i></div>
+            <h3>Container Orchestration</h3>
+            <ul>
+              <li>Kubernetes (K8s)</li>
+              <li>Docker & Docker Compose</li>
+              <li>Helm Charts</li>
+              <li>Service Mesh (Istio/Linkerd)</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fa-solid fa-cloud"></i></div>
+            <h3>Cloud Platforms</h3>
+            <ul>
+              <li>Microsoft Azure</li>
+              <li>Amazon Web Services (AWS)</li>
+              <li>Google Cloud Platform</li>
+              <li>Multi-cloud Architecture</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fa-solid fa-code-branch"></i></div>
+            <h3>Infrastructure as Code</h3>
+            <ul>
+              <li>Terraform</li>
+              <li>Ansible</li>
+              <li>ARM Templates / Bicep</li>
+              <li>CloudFormation</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fa-solid fa-rotate"></i></div>
+            <h3>CI/CD & Automation</h3>
+            <ul>
+              <li>GitHub Actions</li>
+              <li>Azure DevOps</li>
+              <li>Jenkins / GitLab CI</li>
+              <li>ArgoCD / Flux</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <h3>Monitoring & Observability</h3>
+            <ul>
+              <li>Prometheus & Grafana</li>
+              <li>ELK Stack</li>
+              <li>Azure Monitor</li>
+              <li>OpenTelemetry</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3>Security & Compliance</h3>
+            <ul>
+              <li>Zero Trust Architecture</li>
+              <li>Network Security</li>
+              <li>IAM & RBAC</li>
+              <li>Secret Management (Vault)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section-title"><i class="fa-solid fa-diagram-project"></i> Featured Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-header">
+              <h3><i class="fa-brands fa-kubernetes"></i> Multi-Cluster K8s Platform</h3>
+              <span class="project-tag">Production</span>
+            </div>
+            <p>
+              Designed and deployed a highly available, multi-region Kubernetes platform serving 
+              microservices across development, staging, and production environments. Implemented 
+              GitOps workflows with ArgoCD and automated scaling policies.
+            </p>
+            <div class="project-tech">
+              <span>Kubernetes</span>
+              <span>Terraform</span>
+              <span>ArgoCD</span>
+              <span>Prometheus</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <h3><i class="fa-solid fa-gears"></i> Infrastructure Automation Framework</h3>
+              <span class="project-tag">Open Source</span>
+            </div>
+            <p>
+              Developed a comprehensive IaC framework using Terraform modules for rapid cloud 
+              infrastructure provisioning. Includes reusable patterns for networking, compute, 
+              storage, and security across Azure and AWS.
+            </p>
+            <div class="project-tech">
+              <span>Terraform</span>
+              <span>Azure</span>
+              <span>AWS</span>
+              <span>GitHub Actions</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <h3><i class="fa-solid fa-gauge-high"></i> Observability Stack</h3>
+              <span class="project-tag">Enterprise</span>
+            </div>
+            <p>
+              Built a centralized observability platform integrating metrics, logs, and traces. 
+              Implemented custom dashboards, alerting rules, and SLO tracking to improve system 
+              reliability and reduce MTTR by 60%.
+            </p>
+            <div class="project-tech">
+              <span>Prometheus</span>
+              <span>Grafana</span>
+              <span>Loki</span>
+              <span>Jaeger</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-alt">
+      <div class="container">
+        <h2 class="section-title"><i class="fa-solid fa-envelope"></i> Get In Touch</h2>
+        <p class="contact-text">
+          Interested in collaborating or discussing infrastructure challenges? Let's connect!
+        </p>
+        <div class="social-links">
+          <a href="https://github.com/klbrg" target="_blank" aria-label="GitHub" class="social-link">
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+          </a>
+          <a href="https://www.linkedin.com/in/rickard-karlberg" target="_blank" aria-label="LinkedIn" class="social-link">
+            <i class="fab fa-linkedin"></i>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://www.goodreads.com/klbrg" target="_blank" aria-label="Goodreads" class="social-link">
+            <i class="fa-brands fa-goodreads"></i>
+            <span>Goodreads</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Rickard Karlberg • Infrastructure Engineer • <a href="https://karlberg.io" target="_blank">karlberg.io</a></p>
     </div>
-
-    <footer>
-      &copy; 2025 Rickard Karlberg • <a href="https://karlberg.io" target="_blank">karlberg.io</a>
-    </footer>
-  </div>
+  </footer>
 </body>
 
 <script>
+  // Terraform infrastructure code example
   const codeSnippet =
-    `def devops(n):\n` +
-    `	for i in range(1, n + 1):\n` +
-    `		if i % 15 == 0:\n` +
-    `			print("DevOps")\n` +
-    `		elif i % 3 == 0:\n` +
-    `			print("Dev")\n` +
-    `		elif i % 5 == 0:\n` +
-    `			print("Ops")\n` +
-    `		else:\n` +
-    `			print(i)\n` +
-    `devops(15)`;
+    `resource "azurerm_kubernetes_cluster" "main" {\n` +
+    `  name                = "aks-prod-cluster"\n` +
+    `  location            = azurerm_resource_group.main.location\n` +
+    `  resource_group_name = azurerm_resource_group.main.name\n` +
+    `  dns_prefix          = "aks-prod"\n` +
+    `  kubernetes_version  = "1.28.3"\n` +
+    `\n` +
+    `  default_node_pool {\n` +
+    `    name                = "system"\n` +
+    `    node_count          = 3\n` +
+    `    vm_size             = "Standard_D4s_v3"\n` +
+    `    enable_auto_scaling = true\n` +
+    `    min_count           = 3\n` +
+    `    max_count           = 10\n` +
+    `  }\n` +
+    `\n` +
+    `  identity {\n` +
+    `    type = "SystemAssigned"\n` +
+    `  }\n` +
+    `\n` +
+    `  network_profile {\n` +
+    `    network_plugin = "azure"\n` +
+    `    network_policy = "calico"\n` +
+    `  }\n` +
+    `}\n`;
 
   const codeOutput =
-    `1\n` +
-    `2\n` +
-    `Dev\n` +
-    `4\n` +
-    `Ops\n` +
-    `Dev\n` +
-    `7\n` +
-    `8\n` +
-    `Dev\n` +
-    `Ops\n` +
-    `11\n` +
-    `Dev\n` +
-    `13\n` +
-    `14\n` +
-    `DevOps`;
+    `\n` +
+    `Terraform will perform the following actions:\n` +
+    `\n` +
+    `  # azurerm_kubernetes_cluster.main will be created\n` +
+    `  + resource "azurerm_kubernetes_cluster" "main" {\n` +
+    `      + name                = "aks-prod-cluster"\n` +
+    `      + location            = "westeurope"\n` +
+    `      + resource_group_name = "rg-infrastructure"\n` +
+    `      + dns_prefix          = "aks-prod"\n` +
+    `      + kubernetes_version  = "1.28.3"\n` +
+    `    }\n` +
+    `\n` +
+    `Plan: 1 to add, 0 to change, 0 to destroy.\n` +
+    `\n` +
+    `✓ Cluster successfully provisioned\n` +
+    `✓ Node pools configured\n` +
+    `✓ Network policies enabled\n`;
 
   const outputEl = document.getElementById('typed-output');
   let i = 0;
@@ -88,18 +314,52 @@
     if (i < codeSnippet.length && isTyping) {
       outputEl.textContent += codeSnippet.charAt(i);
       i++;
-      setTimeout(typeChar, 125); // adjust speed here
+      setTimeout(typeChar, 25); // typing speed
     }
   }
 
   function clearTerminal() {
     isTyping = false;
-    console.clear();
     outputEl.textContent = '';
-    outputEl.classList.add('no-cursor'); // Remove blinking cursor
+    outputEl.classList.add('no-cursor');
   }
 
-  document.addEventListener('DOMContentLoaded', typeChar);
+  // Smooth scrolling for navigation
+  document.addEventListener('DOMContentLoaded', function() {
+    typeChar();
+    
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.skill-card, .project-card').forEach(el => {
+      observer.observe(el);
+    });
+  });
 </script>
 
 </html>
