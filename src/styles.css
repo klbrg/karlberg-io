@@ -114,7 +114,7 @@ main {
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 3rem;
-  text-align: center;
+  text-align: left;
 }
 
 .section-title i {
@@ -125,11 +125,11 @@ main {
 /* Hero Section */
 .hero {
   padding: 6rem 0 4rem;
-  text-align: center;
 }
 
 .hero-content {
   margin-bottom: 3rem;
+  text-align: left;
 }
 
 .hero h1 {
@@ -141,6 +141,7 @@ main {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-align: left;
 }
 
 .hero h2 {
@@ -148,6 +149,7 @@ main {
   font-weight: 500;
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
+  text-align: left;
 }
 
 .hero h2 i {
@@ -158,9 +160,9 @@ main {
 .hero-description {
   font-size: 1.15rem;
   color: var(--text-secondary);
-  max-width: 700px;
-  margin: 0 auto;
+  max-width: 800px;
   line-height: 1.8;
+  text-align: left;
 }
 
 /* Terminal */
@@ -168,19 +170,20 @@ main {
   background: var(--terminal-bg);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: var(--card-shadow-hover);
-  margin: 2rem auto;
-  max-width: 800px;
-  text-align: left;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  margin: 2rem 0;
+  max-width: 900px;
+  border: 1px solid #334155;
 }
 
 .terminal-header {
   background: #0f172a;
-  padding: 0.75rem 1rem;
+  padding: 0.875rem 1.25rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #334155;
+  user-select: none;
 }
 
 .terminal-title {
@@ -188,6 +191,8 @@ main {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.875rem;
   font-weight: 500;
+  display: flex;
+  align-items: center;
 }
 
 .terminal-title i {
@@ -198,27 +203,67 @@ main {
 .terminal-controls {
   display: flex;
   gap: 0.5rem;
+  align-items: center;
 }
 
 .control {
   width: 12px;
   height: 12px;
   border-radius: 50%;
+  cursor: pointer;
+  transition: opacity 0.2s;
 }
 
-.control.close { background: #ef4444; }
-.control.minimize { background: #f59e0b; }
-.control.maximize { background: #10b981; }
+.control:hover {
+  opacity: 0.8;
+}
+
+.control.close {
+  background: #ef4444;
+}
+
+.control.minimize {
+  background: #f59e0b;
+}
+
+.control.maximize {
+  background: #10b981;
+}
 
 .terminal-output {
-  padding: 1.5rem;
+  padding: 1.5rem 1.25rem;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.875rem;
   color: var(--terminal-text);
-  line-height: 1.6;
-  white-space: pre-wrap;
-  min-height: 400px;
+  line-height: 1.7;
+  white-space: pre;
+  min-height: 420px;
+  max-height: 600px;
   overflow-x: auto;
+  overflow-y: auto;
+  word-wrap: normal;
+  tab-size: 2;
+  -moz-tab-size: 2;
+  scrollbar-width: thin;
+  scrollbar-color: #475569 #1e293b;
+}
+
+.terminal-output::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.terminal-output::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+.terminal-output::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+
+.terminal-output::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
 }
 
 #typed-output::after {
@@ -233,13 +278,20 @@ main {
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
 /* Execute Button */
 .execute-button {
-  margin: 2rem auto;
+  margin: 2rem 0;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -256,25 +308,25 @@ main {
   transition: all 0.3s ease;
 }
 
-.execute-button:hover {
+.execute-button:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: var(--card-shadow-hover);
 }
 
-.execute-button:active {
+.execute-button:active:not(:disabled) {
   transform: translateY(0);
 }
 
 .execute-button:disabled {
   cursor: not-allowed;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .execute-button.applied {
   background: linear-gradient(135deg, var(--success-color), #059669);
 }
 
-.execute-button.applied:hover {
+.execute-button.applied:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: var(--card-shadow-hover);
 }
@@ -434,15 +486,15 @@ main {
 
 /* Contact Section */
 .contact-text {
-  text-align: center;
   font-size: 1.15rem;
   color: var(--text-secondary);
   margin-bottom: 2rem;
+  text-align: left;
 }
 
 .social-links {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 2rem;
   flex-wrap: wrap;
 }
@@ -507,16 +559,28 @@ main {
   animation: fadeIn 1s ease forwards;
 }
 
-.delay-1 { animation-delay: 0.2s; }
-.delay-2 { animation-delay: 0.4s; }
-.delay-3 { animation-delay: 0.6s; }
-.delay-4 { animation-delay: 0.8s; }
+.delay-1 {
+  animation-delay: 0.2s;
+}
+
+.delay-2 {
+  animation-delay: 0.4s;
+}
+
+.delay-3 {
+  animation-delay: 0.6s;
+}
+
+.delay-4 {
+  animation-delay: 0.8s;
+}
 
 @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

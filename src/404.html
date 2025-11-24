@@ -99,9 +99,12 @@
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0);
             }
+
             50% {
                 transform: translateY(-20px);
             }
@@ -111,6 +114,7 @@
             from {
                 transform: rotate(0deg);
             }
+
             to {
                 transform: rotate(360deg);
             }
@@ -144,7 +148,7 @@
         <div class="error-code">404</div>
         <h1>Page Not Found</h1>
         <p>
-            Looks like this route isn't configured in the infrastructure. 
+            Looks like this route isn't configured in the infrastructure.
             The page you're looking for doesn't exist or has been moved.
         </p>
         <a href="/" class="btn">
