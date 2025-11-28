@@ -100,7 +100,7 @@
 
         <div class="terminal fade-in delay-3">
           <div class="terminal-header">
-            <span class="terminal-title"><i class="fa-solid fa-terminal"></i> infrastructure.tf</span>
+            <span class="terminal-title"><i class="fa-solid fa-terminal"></i> argocd-application.yaml</span>
             <div class="terminal-controls">
               <span class="control close"></span>
               <span class="control minimize"></span>
@@ -110,7 +110,7 @@
           <pre id="typed-output" class="terminal-output"></pre>
         </div>
         <button class="execute-button fade-in delay-4" id="apply-button">
-          <i class="fa-solid fa-play"></i> Apply Configuration
+          <i class="fa-solid fa-play"></i> Sync Application
         </button>
       </div>
     </section>
@@ -311,89 +311,47 @@
 </body>
 
 <script>
-  // Terraform infrastructure code example
   const codeSnippet =
-    `resource "azurerm_kubernetes_cluster" "main" {\n` +
-    `  name                = "aks-prod-cluster"\n` +
-    `  location            = azurerm_resource_group.main.location\n` +
-    `  resource_group_name = azurerm_resource_group.main.name\n` +
-    `  dns_prefix          = "aks-prod"\n` +
-    `  kubernetes_version  = "1.34.0"\n` +
-    `  sku_tier            = "Standard"\n` +
-    `\n` +
-    `  default_node_pool {\n` +
-    `    name                = "system"\n` +
-    `    node_count          = 3\n` +
-    `    vm_size             = "Standard_D4s_v3"\n` +
-    `    enable_auto_scaling = true\n` +
-    `    min_count           = 3\n` +
-    `    max_count           = 10\n` +
-    `    os_disk_size_gb     = 128\n` +
-    `    zones               = [1, 2, 3]\n` +
-    `  }\n` +
-    `\n` +
-    `  identity {\n` +
-    `    type = "SystemAssigned"\n` +
-    `  }\n` +
-    `\n` +
-    `  network_profile {\n` +
-    `    network_plugin      = "azure"\n` +
-    `    network_plugin_mode = "overlay"\n` +
-    `    network_dataplane   = "cilium"\n` +
-    `    load_balancer_sku   = "standard"\n` +
-    `    service_cidr        = "10.0.0.0/16"\n` +
-    `    dns_service_ip      = "10.0.0.10"\n` +
-    `  }\n` +
-    `\n` +
-    `  azure_policy_enabled = true\n` +
-    `\n` +
-    `  oms_agent {\n` +
-    `    log_analytics_workspace_id = azurerm_log_analytics_workspace.main.id\n` +
-    `  }\n` +
-    `}\n`;
+    `# ArgoCD Application - GitOps deployment\n` +
+    `apiVersion: argoproj.io/v1alpha1\n` +
+    `kind: Application\n` +
+    `metadata:\n` +
+    `  name: platform-services\n` +
+    `spec:\n` +
+    `  destination:\n` +
+    `    namespace: production\n` +
+    `    server: https://aks-prod.westeurope.azure.com\n` +
+    `  source:\n` +
+    `    repoURL: https://github.com/acme/platform/manifests\n` +
+    `    path: overlays/prod\n` +
+    `    helm:\n` +
+    `      values: |\n` +
+    `        cilium:\n` +
+    `          hubble:\n` +
+    `            enabled: true\n` +
+    `        certManager:\n` +
+    `          acme:\n` +
+    `            server: https://acme-v02.api.letsencrypt.org\n` +
+    `        networkPolicy:\n` +
+    `          defaultDeny: true\n` +
+    `  syncPolicy:\n` +
+    `    automated:\n` +
+    `      prune: true\n` +
+    `      selfHeal: true\n`;
 
   const codeOutput =
     `\n` +
-    `Terraform will perform the following actions:\n` +
+    `✓ ArgoCD sync initiated\n` +
+    `✓ Kubernetes manifests validated\n` +
+    `✓ Helm values applied\n` +
+    `✓ Cilium network policies enforced (L3-L7)\n` +
+    `✓ Hubble observability enabled\n` +
+    `✓ cert-manager ACME configured\n` +
+    `✓ TLS certificates provisioned\n` +
+    `✓ Network isolation: default-deny active\n` +
     `\n` +
-    `  # azurerm_kubernetes_cluster.main will be created\n` +
-    `  + resource "azurerm_kubernetes_cluster" "main" {\n` +
-    `      + name                = "aks-prod-cluster"\n` +
-    `      + location            = "westeurope"\n` +
-    `      + resource_group_name = "rg-infrastructure"\n` +
-    `      + dns_prefix          = "aks-prod"\n` +
-    `      + kubernetes_version  = "1.34.0"\n` +
-    `      + sku_tier            = "Standard"\n` +
-    `      + network_dataplane   = "cilium"\n` +
-    `      + azure_policy_enabled = true\n` +
-    `\n` +
-    `      + default_node_pool {\n` +
-    `          + zones = [1, 2, 3]\n` +
-    `        }\n` +
-    `    }\n` +
-    `\n` +
-    `Plan: 1 to add, 0 to change, 0 to destroy.\n` +
-    `\n` +
-    `Do you want to perform these actions?\n` +
-    `  Terraform will perform the actions described above.\n` +
-    `  Only 'yes' will be accepted to approve.\n` +
-    `\n` +
-    `  Enter a value: yes\n` +
-    `\n` +
-    `azurerm_kubernetes_cluster.main: Creating...\n` +
-    `azurerm_kubernetes_cluster.main: Still creating... [30s elapsed]\n` +
-    `azurerm_kubernetes_cluster.main: Still creating... [1m0s elapsed]\n` +
-    `azurerm_kubernetes_cluster.main: Still creating... [1m30s elapsed]\n` +
-    `azurerm_kubernetes_cluster.main: Still creating... [2m0s elapsed]\n` +
-    `azurerm_kubernetes_cluster.main: Creation complete after 3m47s [id=/subscriptions/.../aks-prod-cluster]\n` +
-    `\n` +
-    `Apply complete! Resources: 1 added, 0 changed, 0 destroyed.\n` +
-    `\n` +
-    `✓ AKS cluster successfully provisioned\n` +
-    `✓ Cilium eBPF dataplane configured\n` +
-    `✓ High availability across 3 zones\n` +
-    `✓ Azure Policy enabled for compliance\n` +
-    `✓ Monitoring with Log Analytics enabled\n`;
+    `Application synced successfully\n` +
+    `Health: Healthy | Sync: Synced\n`;
 
   const outputEl = document.getElementById('typed-output');
   const applyButton = document.querySelector('.execute-button');
@@ -425,7 +383,7 @@
     outputEl.classList.remove('no-cursor');
     i = 0;
     isTyping = true;
-    applyButton.innerHTML = '<i class="fa-solid fa-play"></i> Apply Configuration';
+    applyButton.innerHTML = '<i class="fa-solid fa-play"></i> Sync Application';
     applyButton.classList.remove('applied');
     applyButton.disabled = false;
     typeChar();
@@ -438,14 +396,14 @@
     outputEl.classList.add('no-cursor');
 
     // Update button to applying state
-    applyButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Applying...';
+    applyButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Syncing...';
     applyButton.disabled = true;
     applyButton.classList.remove('applied');
 
-    // Simulate terraform apply with realistic timing
+    // Simulate ArgoCD sync with realistic timing
     setTimeout(() => {
       outputEl.textContent = codeOutput;
-      applyButton.innerHTML = '<i class="fa-solid fa-check"></i> Applied Successfully';
+      applyButton.innerHTML = '<i class="fa-solid fa-check"></i> Synced Successfully';
       applyButton.classList.add('applied');
       isApplied = true;
 
